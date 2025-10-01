@@ -1,0 +1,7 @@
+text,label
+"I love this movie, it was fantastic!",positive
+"Terrible film. Waste of time.",negative
+"Absolutely brilliant acting.",positive
+"The plot was boring and predictable.",negative
+"Loved the soundtrack!",positive
+"Not my type of movie, I didn’t enjoy it.",negative
