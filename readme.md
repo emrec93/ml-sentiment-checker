@@ -92,6 +92,8 @@ There is always a chance for errors to occur. This due to needing more data to f
 
 ### Running the model in an API
 
+Make sure you've ran the train.py script first, then:
+
 ```
 uvicorn api:app --reload
 ```
