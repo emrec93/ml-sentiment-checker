@@ -2,17 +2,6 @@
 
 This is a collection of files that I will use to learn more about ML. This specific project is a tool that will let a user check the sentiment of some text as positive or negative, etc.
 
-## Install Dependencies
-
-Below are the steps to get up and running. Run the following in your terminal:
-
-```
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-
 ## What will we learn
 
 - Load and prep text data.
@@ -20,11 +9,14 @@ pip install -r requirements.txt
 - Save the model so you can reuse it later.
 - Run predictions in a script.
 
-### Step 1: Install Needed Libraries
+## Step 1: Install Dependencies
+
+Below are the steps to get up and running. Run the following in your terminal:
 
 ```
-pip install scikit-learn pandas
-
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
 ### Step 2: Dataset
@@ -44,7 +36,7 @@ text,label
 
 ### Step 3: Model Training
 
-#### Step 1: CountVectorizer CountVectorizer() looks at all sentences in the training data and builds a vocabulary:
+#### Part 1: CountVectorizer CountVectorizer() looks at all sentences in the training data and builds a vocabulary:
 
 ```
 vocabulary = ["i", "love", "this", "movie", "it", "was", "fantastic", "terrible", "film", "waste", "of", "time", "absolutely", "brilliant", "acting", "the", "plot", "boring", "and", "predictable", "loved", "soundtrack", "not", "my", "type", "didn’t", "enjoy"]
@@ -58,7 +50,7 @@ Then it converts each sentence into a vector of word counts. Example:
 
 Each position corresponds to a word in the vocabulary. The number is how many times that word appears in the sentence.
 
-#### Step 2: MultinomialNB
+#### Part 2: MultinomialNB
 
 MultinomialNB looks at these word counts for each label:
 
@@ -70,11 +62,11 @@ Then, when it sees a new sentence, it computes the probability that the sentence
 - Words like "love" and "fantastic" push the probability toward positive.
 - Words like "boring" and "waste" push it toward negative.
 
-#### Step 3: Pipeline in Action
+#### Part 3: Pipeline in Action
 
 model.fit(X, y) CountVectorizer learns the vocabulary and converts all training sentences into vectors. MultinomialNB trains on those vectors. model.predict(["I love this movie"]) The pipeline automatically: Converts "I love this movie" → vector using the same vocabulary. Feeds it to MultinomialNB. Returns "positive".
 
-### Step 4: Using The Model
+### Part 4: Using The Model
 
 To test the model:
 
@@ -82,7 +74,6 @@ To test the model:
 python3 train.py
 python3 predict.py
 ```
-
 
 Expected Output:
 
@@ -92,7 +83,6 @@ This was the worst experience ever. -> negative
 ```
 
 There is always a chance for errors to occur. This due to needing more data to fine-tune the training of the model.
-
 
 ### Step 5: Improving the model
 
