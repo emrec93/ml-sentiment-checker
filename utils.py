@@ -1,5 +1,29 @@
 from typing import List
 import pandas as pd
+import re
+import nltk
+from nltk.corpus import stopwords
+
+nltk.download("stopwords")
+stop_words = set(stopwords.words("english"))
+
+def clean_text(text: str) -> str:
+    """
+    Clean text for preprocessing:
+    - Lowercase
+    - Remove punctuation (except emojis)
+    - Remove stopwords
+    - Remove extra whitespace
+    """
+    text = text.lower()
+    # Keep letters, numbers, spaces, and emojis
+    text = re.sub(r"[^a-z0-9\s\U0001F600-\U0001F64F]", "", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    # Remove stopwords
+    text = " ".join(word for word in text.split() if word not in stop_words)
+    return text
+
+
 
 
 def count_words(text: str) -> int:
