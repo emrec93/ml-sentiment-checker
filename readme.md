@@ -89,3 +89,104 @@ There is always a chance for errors to occur. This due to needing more data to f
 1. More training data - Even a few hundred labeled sentences will improve accuracy drastically.
 2. Text preprocessing - Lowercasing, removing punctuation, removing stopwords (the, a, and). This reduces noise and helps the model generalise.
 3. Better vectorization - Instead of simple counts (CountVectorizer), we will use TF-IDF (TfidfVectorizer) to give more weight to important words.
+
+### Running the model in an API
+
+Make sure you've ran the train.py script first, then:
+
+```
+uvicorn api:app --reload
+```
+
+Navigate to http://127.0.0.1:8000 or using Postman, make a GET request to the same URL and you should see the following response:
+
+```
+{
+    "message": "Sentiment Analysis API is running!"
+}
+```
+
+Then make a POST request with the following request body:
+
+```
+{
+  "text": "This is a horrible movie I wish I never watched it"
+}
+```
+
+You should see a response similar to this:
+
+```
+{
+    "text": "This is a horrible movie I wish I never watched it",
+    "sentiment": "negative"
+}
+```
+
+### Confidence Scores API
+
+The API also now will display the confidence score in the response:
+
+```
+{
+    "text": "I loved this movie",
+    "sentiment": "positive",
+    "confidence": 0.9522375476920389
+}
+```
+
+## Batch Prediction
+
+The API can also make batch predictions by POSTing in an array of texts to the /predict_batch endpoint:
+
+```
+{
+  "texts": [
+    "I loved this movie 😍",
+    "Worst movie ever 😡",
+    "Amazing visuals and story!"
+  ]
+}
+```
+
+Expected outcome:
+
+```
+[
+    {
+        "text": "I loved this movie 😍",
+        "sentiment": "positive",
+        "confidence": 0.9522375476920389
+    },
+    {
+        "text": "Worst movie ever 😡",
+        "sentiment": "negative",
+        "confidence": 0.9101871499259232
+    },
+    {
+        "text": "Amazing visuals and story!",
+        "sentiment": "positive",
+        "confidence": 0.9181633530139133
+    }
+]
+```
+
+## Make The API Accessible On Your LAN:
+
+Find your local IP address:
+
+```
+ifconfig | grep inet
+```
+
+Make API accessible to LAN:
+
+```
+uvicorn api:app --reload --host 0.0.0.0 --port 5000
+```
+
+You could also change the port to another one if you prefer:
+
+```
+uvicorn api:app --reload --port 5000
+```
