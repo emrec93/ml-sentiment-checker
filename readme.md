@@ -2,6 +2,16 @@
 
 This is a collection of files that I will use to learn more about ML. This specific project is a tool that will let a user check the sentiment of some text as positive or negative, etc.
 
+## Install Dependencies
+
+Below are the steps to get up and running. Run the following in your terminal:
+
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
 ## What will we learn
 
 - Load and prep text data.
@@ -72,14 +82,14 @@ python3 train.py
 python3 predict.py
 ```
 
-Output:
+Expected Output:
 
 ```
-What a wonderful film! -> negative
-This was the worst experience ever. -> positive
+What a wonderful film! -> positive
+This was the worst experience ever. -> negative
 ```
 
-At the current iteration, there is not enough data to give us accurate results, so better quality data (including more of it) is required to fine-tune the model.
+There is always a chance for errors to occur. This due to needing more data to fine-tune the training of the model.
 
 ### Step 5: Improving the model
 
