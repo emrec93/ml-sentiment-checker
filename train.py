@@ -7,7 +7,7 @@ import joblib
 from utils import clean_text
 
 # 1. Load data
-df = pd.read_csv("data/sentiment_large.csv")
+df = pd.read_csv("data/sentiment_large_real.csv")
 
 # Apply text preprocessing
 df["text"] = df["text"].apply(clean_text)
