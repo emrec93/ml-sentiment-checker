@@ -25,6 +25,7 @@ def clean_text(text: str) -> str:
 
 
 
+
 def count_words(text: str) -> int:
     """
     Count the number of words in a given string.

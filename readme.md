@@ -12,6 +12,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+
 ## What will we learn
 
 - Load and prep text data.
@@ -82,6 +83,7 @@ python3 train.py
 python3 predict.py
 ```
 
+
 Expected Output:
 
 ```
@@ -90,6 +92,7 @@ This was the worst experience ever. -> negative
 ```
 
 There is always a chance for errors to occur. This due to needing more data to fine-tune the training of the model.
+
 
 ### Step 5: Improving the model
 
